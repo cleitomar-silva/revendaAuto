@@ -2,22 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <div class="">
+        
+        <h2>Lista de Chamados</h2>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        @forelse ($chamados as $value)
+            <p>{{$value->titulo}}</p>
+        @empty
+            <p>Nenhum Chamado</p>
+        @endforelse
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 @endsection
