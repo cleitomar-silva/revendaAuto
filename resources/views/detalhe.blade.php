@@ -3,13 +3,13 @@
 @section('content')
 <div class="container">
     <div class="">
+        @can('ver-chamado', $chamado)
+            <h2>Detalhe do chamado</h2>
         
-        <h2>Detalhe do chamado</h2>
-
-    <p> 
-        Titulo: {{$chamado->titulo}}         
-    </p>
-
+            Titulo: {{$chamado->titulo}}         
+        @else
+            <h3>Você não tem permissão para acessar este registro!</h3>
+        @endcan
 
     </div>
 </div>

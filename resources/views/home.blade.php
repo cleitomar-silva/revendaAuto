@@ -9,7 +9,10 @@
         @forelse ($chamados as $value)
             <p>
                 {{$value->titulo}}
-                <a href="/home/{{ $value->id }}">Editar</a>
+                
+                @can('ver-chamado', $value)
+                    <a href="/home/{{ $value->id }}">Editar</a>
+                @endcan
             </p>
         @empty
             <p>Nenhum Chamado</p>

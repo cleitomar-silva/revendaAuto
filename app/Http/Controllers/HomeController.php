@@ -26,22 +26,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //mostra so os proprios posts
+        
         $user = Auth::user();
-        $chamados = Chamado::where('user_id', '=', $user->id)->get();
+        $chamados = Chamado::all();
         return view('home', compact('chamados'));
     }
 
     public function detalhe($id)
     {
         $chamado = Chamado::find($id);
+        return view('detalhe', compact('chamado'));
         //Não autorizado
-        if(Gate::denies('ver-chamado', $chamado)){
+        /*if(Gate::denies('ver-chamado', $chamado)){
             abort('403', 'Não autorizado');
-        }
+        }*/
         //tem acesso
-        if(Gate::allows('ver-chamado', $chamado)){
+       /* if(Gate::allows('ver-chamado', $chamado)){
           return view('detalhe', compact('chamado'));
-        }        
+        }    */
+        
+        
+        
     }
 }
