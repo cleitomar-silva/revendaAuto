@@ -10,7 +10,7 @@
             <p>
                 {{$value->titulo}}
                 
-                @can('ver-chamado', $value)
+                @can('view', $value)
                     <a href="/home/{{ $value->id }}">Editar</a>
                 @endcan
             </p>
