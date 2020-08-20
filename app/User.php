@@ -41,4 +41,8 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Chamado');
     }
 
+    public function eAdmin()
+    {
+        return $this->id == 1;
+    }
 }

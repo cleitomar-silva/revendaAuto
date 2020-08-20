@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+         'App\Chamado' => 'App\Policies\ChamadoPolicy',
     ];
 
     /**
@@ -26,8 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('ver-chamado', function($user, Chamado $chamado){
+        /*Gate::define('ver-chamado', function($user, Chamado $chamado){
             return $user->id == $chamado->user_id;
-        });
+        });*/
     }
 }
