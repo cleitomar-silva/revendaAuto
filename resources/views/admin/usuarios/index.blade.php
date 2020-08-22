@@ -23,7 +23,7 @@
                 <td>{{ $usuario->name }}</td>
                 <td>{{ $usuario->email }}</td>
                 <td>
-                    <a href="" class="btn btn-primary">
+                    <a href="{{ url('/admin/usuarios/papel/'.$usuario->id)}}" class="btn btn-primary">
                         <i class="fa fa-lock"></i>
                     </a>
                 </td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Papel;
 
 class UsuarioController extends Controller
 {
@@ -23,6 +24,30 @@ class UsuarioController extends Controller
         return view('admin.usuarios.index', compact('usuarios','caminhos'));
     }
 
+
+    public function papel($id)
+    {
+        $usuario = User::find($id);
+        
+        $papel = Papel::all();
+        $caminhos = [
+            ['url' => '/admin', 'titulo' => 'Admin'],
+            ['url' => '/admin/usuarios', 'titulo' => 'Usuários'],
+            ['url' => '', 'titulo' => 'Papel']
+        ];
+        return view('admin.usuarios.papel', compact('usuario', 'papel', 'caminhos'));
+    }
+
+    public function papelStore(Request $request)
+    {
+        return "hello";
+    }
+
+    public function papelDestroy($id, $papel_id)
+    {
+        return 'DElete';
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,10 +64,7 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
     /**
      * Display the specified resource.

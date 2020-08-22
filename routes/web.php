@@ -25,7 +25,11 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/', 'Admin\AdminController@index');
-
     Route::resource('usuarios', 'Admin\UsuarioController');
+
+   Route::get('usuarios/papel/{id}', 'Admin\UsuarioController@papel');
+   Route::post('usuarios/papel/{papel}', 'Admin\UsuarioController@papelStore');
+   Route::delete('usuarios/papel/{usuario}/{papel}', 'Admin\UsuarioController@papelDestroy');
+
 
 });
