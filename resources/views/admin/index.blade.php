@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">    
         
-    <h2>Admin</h2>
+    <h2 class="text-center">Admin</h2>
+    @include('admin._caminho')
+    
     <div class="row">
         <div class="col-sm-1 col-md-1 col-lg-6 col-lx-6">
             <div class="card text-white mb-3" style="background: #9561e2;">
