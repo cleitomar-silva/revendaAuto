@@ -14,7 +14,7 @@
                     <p class="card-text">Usuários do sistema</p>
                 </div>
                 <div class="card-header">
-                    <a href="" class="link">Visualizar</a>  
+                    <a href="{{ route('usuarios.index') }}" class="link">Visualizar</a>  
                 </div>                
             </div>
         </div>
