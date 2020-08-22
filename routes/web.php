@@ -19,5 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/{id}', 'HomeController@detalhe');
+
+//rotas protegidas por autenticacao, 
+//so deixa o usuario acessar se estiver logado
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+    Route::get('/', 'Admin\AdminController@index');
+});
