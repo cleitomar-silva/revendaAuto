@@ -50,7 +50,7 @@
                     <p class="card-text">Listar papéis do sistema</p>
                 </div>
                 <div class="card-header">
-                    <a href="" class="link">Visualizar</a>  
+                    <a href="{{ route('papeis.index') }}" class="link">Visualizar</a>  
                 </div> 
             </div>
         </div>

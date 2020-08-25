@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
    Route::post('usuarios/papel/{papel}', 'Admin\UsuarioController@papelStore');
    Route::delete('usuarios/papel/{usuario}/{papel}', 'Admin\UsuarioController@papelDestroy');
 
+   Route::resource('papeis', 'Admin\PapelController');
 
 });
