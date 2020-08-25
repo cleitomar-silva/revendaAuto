@@ -38,14 +38,21 @@ class UsuarioController extends Controller
         return view('admin.usuarios.papel', compact('usuario', 'papel', 'caminhos'));
     }
 
-    public function papelStore(Request $request)
+    public function papelStore(Request $request, $id)
     {
-        return "hello";
+        $usuario = User::find($id);
+        $dados = $request->all();
+        $papel = Papel::find($dados['papel_id']);
+        $usuario->adicionaPapel($papel);
+        return redirect()->back(); // redireciona para ultima tela vista
     }
 
     public function papelDestroy($id, $papel_id)
     {
-        return 'DElete';
+        $usuario = User::find($id);        
+        $papel = Papel::find($papel_id);
+        $usuario->removePapel($papel);
+        return redirect()->back(); 
     }
 
     /**

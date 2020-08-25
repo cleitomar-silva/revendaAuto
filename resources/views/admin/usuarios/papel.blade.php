@@ -9,7 +9,7 @@
     <form action="{{ url('/admin/usuarios/papel/'.$usuario->id)}}" method="POST">
         {{  csrf_field() }}
         <div class="form-group">
-            <select class="form-control">
+            <select class="form-control" name="papel_id">
             
                 @forelse($papel as $valor)
                     <option value="{{ $valor->id }}">{{ $valor->nome }}</option>
@@ -40,7 +40,7 @@
                     <td>{{ $papel->descricao }}</td>
                     
                     <td>
-                        <form action="{{ url('/admin/usuario/papel/'.$usuario->id.'/'.$papel->id) }}" method="POST">
+                        <form action="{{ url('/admin/usuarios/papel/'.$usuario->id.'/'.$papel->id) }}" method="POST">
                             {{ method_field('DELETE') }}
                             {{  csrf_field() }}                       
                             
@@ -50,7 +50,7 @@
                 </tr>    
             @empty
                 <tr>
-                    <td class="text-center">Nenhum Papel</td>
+                    <td colspan="3" class="text-center">Nenhum Papel</td>
                 </tr>
                 
             @endforelse         
