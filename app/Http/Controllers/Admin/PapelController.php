@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Papel;
+use App\Permissao;
 
 class PapelController extends Controller
 {
@@ -23,6 +24,36 @@ class PapelController extends Controller
 
         return view('admin.papel.index', compact('registros','caminhos'));
     }
+
+    public function permissao($id)
+    {
+        $papel = Papel::find($id);        
+        $permissao = Permissao::all();
+        $caminhos = [
+            ['url' => '/admin', 'titulo' => 'Admin'],
+            ['url' => route('papeis.index'), 'titulo' => 'Papéis'],
+            ['url' => '', 'titulo' => 'Permissões']
+        ];
+        return view('admin.papel.permissao', compact('papel', 'permissao', 'caminhos'));
+    }
+
+    public function permissaoStore(Request $request, $id)
+    {
+        $papel = Papel::find($id);
+        $dados = $request->all();
+        $permissao = Permissao::find($dados['permissao_id']);
+        $papel->adicionaPermissao($permissao);
+        return redirect()->back(); // redireciona para ultima tela vista
+    }
+
+    public function permissaoDestroy($id, $permissao_id)
+    {
+        $papel = Papel::find($id);        
+        $permissao = Permissao::find($permissao_id);
+        $papel->removePermissao($permissao);
+        return redirect()->back(); 
+    }
+
 
     /**
      * Show the form for creating a new resource.

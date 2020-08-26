@@ -27,9 +27,9 @@
                         <a title="Editar" href="{{ route('papeis.edit', $registro->id)}}" class="btn btn-warning">
                             <i class="fa fa-pencil-alt"></i>
                         </a>
-                        <a title="Permissões" href="{{ url('/admin/usuarios/papel/'.$registro->id)}}" class="btn btn-primary">
+                        <a title="Permissões" href="{{ route('papeis.permissao', $registro->id)}}" class="btn btn-primary">
                             <i class="fa fa-lock"></i>
-                        </a>    
+                        </a>     
                         
 
                         {{ method_field('DELETE') }}
