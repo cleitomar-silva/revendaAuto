@@ -24,19 +24,22 @@
                 <td>{{ $registro->descricao }}</td>
                 <td>
                     <form action="{{ route('papeis.destroy', $registro->id) }}" method="post">
-                        <a title="Editar" href="{{ route('papeis.edit', $registro->id)}}" class="btn btn-warning">
-                            <i class="fa fa-pencil-alt"></i>
-                        </a>
-                        <a title="Permissões" href="{{ route('papeis.permissao', $registro->id)}}" class="btn btn-primary">
-                            <i class="fa fa-lock"></i>
-                        </a>     
-                        
+                        @can('papel-edit')
+                            <a title="Editar" href="{{ route('papeis.edit', $registro->id)}}" class="btn btn-warning">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                            <a title="Permissões" href="{{ route('papeis.permissao', $registro->id)}}" class="btn btn-primary">
+                                <i class="fa fa-lock"></i>
+                            </a>     
+                        @endcan
 
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
-                        <button title="Deletar"class="btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </button>
+                        @can('papel-delete')
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <button title="Deletar"class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        @endcan
                     </form>
                    
                 </td>
@@ -47,7 +50,9 @@
             
         </tbody>
       </table>
-      <a href="{{ route('papeis.create') }}" type="submit" class="btn btn-primary mb-2">Adicionar</a>
+      @can('papel-create')
+        <a href="{{ route('papeis.create') }}" type="submit" class="btn btn-primary mb-2">Adicionar</a>
+    @endcan
 
 </div>
 @endsection
